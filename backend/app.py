@@ -19,12 +19,12 @@ try:
             break
     
     if not env_loaded:
-        print("⚠️ No .env file found, using system environment variables")
+        print("No .env file found, using system environment variables")
     
     print(f"DEBUG: Working directory: {os.getcwd()}")
     print(f"DEBUG: Checked paths: {env_paths}")
 except Exception as e:
-    print(f"❌ Error loading environment variables: {e}")
+    print(f"Error loading environment variables: {e}")
 
 app = Flask(__name__, static_folder='static', static_url_path='')
 print("✅ Flask app created")
@@ -37,16 +37,16 @@ try:
     client = OpenAI()  # Will automatically use OPENAI_API_KEY from environment
     print("✅ OpenAI client initialized successfully")
 except Exception as e:
-    print(f"❌ Error initializing OpenAI client: {e}")
+    print(f"Error initializing OpenAI client: {e}")
     client = None
 
 try:
     init_db()
     print("✅ Database initialized successfully")
 except Exception as e:
-    print(f"❌ Error initializing database: {e}")
+    print(f"Error initializing database: {e}")
 
-DB_DIR = '/var/www/Flash-Vocab/backend/databases'
+DB_DIR = '/var/www/flash_vocab/backend/databases'
 os.makedirs(DB_DIR, exist_ok=True)
 
 def get_device_id():
